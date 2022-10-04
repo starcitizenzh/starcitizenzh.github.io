@@ -32,24 +32,29 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/images"
+    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/files"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\starcitizenzh.github.io\files" />
       <recent name="D:\GitHub\starcitizenzh.github.io\images" />
       <recent name="D:\GitHub\starcitizenzh.github.io\images\svg" />
       <recent name="D:\GitHub\starcitizenzh.github.io\css" />
       <recent name="D:\GitHub\starcitizenzh.github.io\js" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/index.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
+    <configuration name="register_account.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/tutorial/register_account.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.register_account.html" />
       </list>
     </recent_temporary>
   </component>
@@ -62,7 +67,7 @@
       <option name="presentableId" value="Default" />
       <updated>1664767244625</updated>
       <workItem from="1664767247637" duration="10548000" />
-      <workItem from="1664846609759" duration="3957000" />
+      <workItem from="1664846609759" duration="10115000" />
     </task>
     <servers />
   </component>
