@@ -32,11 +32,13 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/css"
+    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/images"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\starcitizenzh.github.io\images" />
+      <recent name="D:\GitHub\starcitizenzh.github.io\images\svg" />
       <recent name="D:\GitHub\starcitizenzh.github.io\css" />
       <recent name="D:\GitHub\starcitizenzh.github.io\js" />
     </key>
@@ -59,7 +61,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1664767244625</updated>
-      <workItem from="1664767247637" duration="4947000" />
+      <workItem from="1664767247637" duration="10548000" />
+      <workItem from="1664846609759" duration="1760000" />
     </task>
     <servers />
   </component>
