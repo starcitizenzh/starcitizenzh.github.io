@@ -26,15 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/files"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/starcitizenzh.github.io/files&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GitHub\starcitizenzh.github.io\files" />
@@ -44,17 +44,21 @@
       <recent name="D:\GitHub\starcitizenzh.github.io\js" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.register_account.html">
+  <component name="RunManager" selected="JavaScript Debug.vue3.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="register_account.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/tutorial/register_account.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
+    <configuration name="vue3.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/vue3.html" useBuiltInWebServerPort="true">
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JavaScript Debug.register_account.html" />
+        <item itemvalue="JavaScript Debug.vue3.html" />
         <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.register_account.html" />
       </list>
     </recent_temporary>
   </component>
@@ -67,7 +71,9 @@
       <option name="presentableId" value="Default" />
       <updated>1664767244625</updated>
       <workItem from="1664767247637" duration="10548000" />
-      <workItem from="1664846609759" duration="15723000" />
+      <workItem from="1664846609759" duration="16318000" />
+      <workItem from="1664934023001" duration="2402000" />
+      <workItem from="1664939779271" duration="196000" />
     </task>
     <servers />
   </component>
