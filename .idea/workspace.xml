@@ -26,15 +26,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/GitHub/starcitizenzh.github.io/images/tutorial/setupVPN_install"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/GitHub/starcitizenzh.github.io/images/tutorial/setupVPN_install&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\GitHub\starcitizenzh.github.io\images\tutorial\setupVPN_install" />
@@ -74,7 +74,8 @@
       <workItem from="1664846609759" duration="16318000" />
       <workItem from="1664934023001" duration="2402000" />
       <workItem from="1664939779271" duration="196000" />
-      <workItem from="1664942906439" duration="2380000" />
+      <workItem from="1664942906439" duration="4159000" />
+      <workItem from="1665030385650" duration="3425000" />
     </task>
     <servers />
   </component>
