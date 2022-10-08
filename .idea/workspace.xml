@@ -44,7 +44,7 @@
       <recent name="D:\GitHub\starcitizenzh.github.io\css" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.register_account.html">
+  <component name="RunManager" selected="JavaScript Debug.index.html">
     <configuration name="index.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/starcitizenzh.github.io/index.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
@@ -56,9 +56,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript Debug.index.html" />
         <item itemvalue="JavaScript Debug.register_account.html" />
         <item itemvalue="JavaScript Debug.vue3.html" />
-        <item itemvalue="JavaScript Debug.index.html" />
       </list>
     </recent_temporary>
   </component>
@@ -76,7 +76,7 @@
       <workItem from="1664939779271" duration="196000" />
       <workItem from="1664942906439" duration="4159000" />
       <workItem from="1665030385650" duration="3425000" />
-      <workItem from="1665212818235" duration="2154000" />
+      <workItem from="1665212818235" duration="3810000" />
     </task>
     <servers />
   </component>
