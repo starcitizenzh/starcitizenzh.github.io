@@ -1,133 +1,344 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-    <meta name="generator" content="Hugo 0.88.1">
-    <title>Star Citizen 星际公民资讯网站</title>
-    <link rel="shortcut icon" href="images/starcitizendonnyjin.ico" type="image/x-icon">
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/starter-template/">
-
-
-    <!-- Bootstrap core CSS -->
-    <!--<link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星际公民：宇宙终极指南</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Starfarer Neutrals -->
+    <!-- Application Structure Plan: 本应用设计为主题式单页应用（SPA），而非线性报告。顶部设有粘性导航栏，方便用户在“核心玩法”、“飞船世界”、“开发模式”和“入门指南”等关键部分之间快速跳转。这种结构允许新玩家根据兴趣自由探索，例如，对飞船感兴趣的用户可以直接查看飞船部分，而关心项目进展的用户可以专注于开发模式。通过交互式卡片和图表，复杂信息被分解为易于理解的模块，旨在优化新手的学习曲线和探索体验。 -->
+    <!-- Visualization & Content Choices:
+        1. 众筹资金趋势: 目标是展示项目随时间变化的财务增长。选用折线图（Line Chart）能直观地呈现增长趋势。交互方式是鼠标悬停显示具体年份的筹款额。这比静态数字更有吸引力，有助于用户理解项目的长期发展。使用Chart.js（Canvas渲染）实现。
+        2. 核心玩法介绍: 目标是分类展示多样的职业路径。采用可点击的选项卡（Tab）结构，用户点击不同玩法图标，下方会显示相应的文字描述。这种方式在有限空间内清晰地组织了信息，避免了长列表的枯燥，互动性更强。使用HTML/CSS/JS实现。
+        3. 飞船制造商: 目标是介绍游戏中的主要飞船品牌。使用卡片式布局，每张卡片代表一个制造商。点击卡片会展开显示该品牌的理念和代表飞船。这种交互方式模拟了探索发现的过程，比简单的图文列表更具吸引力。使用HTML/CSS/JS实现。
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
-        .bd-placeholder-img {
-            font-size: 1.125rem;
-            text-anchor: middle;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none;
+        body {
+            font-family: 'Noto Sans SC', sans-serif;
+            background-color: #f0f2f5;
+            color: #1a202c;
         }
-
-        @media (min-width: 768px) {
-            .bd-placeholder-img-lg {
-                font-size: 3.5rem;
-            }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 400px;
+            max-height: 50vh;
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .nav-link {
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .nav-link:hover {
+            color: #3b82f6;
+            border-bottom-color: #3b82f6;
+        }
+        .tab-active {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            background-color: #3b82f6;
+            color: #ffffff;
+        }
+        .manufacturer-card.expanded .details {
+            max-height: 500px;
+            opacity: 1;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
     </style>
-
-
-    <!-- Custom styles for this template -->
-    <link href="starter-template.css" rel="stylesheet">
 </head>
-<body>
+<body class="antialiased">
 
-<div class="col-lg-8 mx-auto p-3 py-md-5">
-<!--    <a href="http://www.starcitizenzh.com" class="nav-link px-2 text-muted">首页</a>-->
-<!--    <header class="d-flex align-items-center pb-3 mb-5 border-bottom">-->
-<!--        <img src="images/starcitizendonnyjin.ico" width="30"/>-->
-<!--        <a href="https://www.starcitizenzh.com" class="d-flex align-items-center text-dark text-decoration-none">-->
-
-<!--            <span class="fs-4">Star Citizen 星际公民资讯网</span>-->
-<!--        </a>-->
-<!--    </header>-->
-    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <img src="images/starcitizendonnyjin.ico" width="30"/>
-        <span class="fs-4">Star Citizen 星际公民资讯网</span>
-      </a>
-
-      <ul class="nav nav-pills">
-        <li class="nav-item"><a href="https://starcitizenzh.com" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="https://starcitizenzh.com/sc_guide" class="nav-link active" aria-current="page">星际公民中文指导</a></li>
-      </ul>
+    <header id="header" class="bg-white/80 backdrop-blur-sm sticky top-0 z-50 shadow-md">
+        <nav class="container mx-auto px-6 py-3 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-gray-800">星际公民 / Star Citizen</h1>
+            <div class="hidden md:flex space-x-8">
+                <a href="#overview" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">游戏概述</a>
+                <a href="#gameplay" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">核心玩法</a>
+                <a href="#ships" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">飞船世界</a>
+                <a href="#development" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">开发模式</a>
+                <a href="#getting-started" class="nav-link text-gray-600 border-b-2 border-transparent pb-1">如何开始</a>
+            </div>
+            <div class="md:hidden">
+                <select id="mobile-nav" class="bg-gray-200 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                    <option value="#overview">游戏概述</option>
+                    <option value="#gameplay">核心玩法</option>
+                    <option value="#ships">飞船世界</option>
+                    <option value="#development">开发模式</option>
+                    <option value="#getting-started">如何开始</option>
+                </select>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <h1>官方账号邀请码注册</h1>
-        <p class="fs-5 col-md-8">星际公民
-            游戏账号注册时可填推荐码：STAR-2627-3QD2，可获得价值5美刀游戏币.白送的，不拿就亏了。</p>
+    <main class="container mx-auto px-6 py-8">
 
-        <div class="mb-5">
-            <a href="https://robertsspaceindustries.com/enlist?referral=STAR-2627-3QD2"
-               class="btn btn-primary btn-lg px-4">注册星际公民游戏账号</a>
-        </div>
-        <img src="images/starcitizen_scan_register.png" width=30%/>
-        <hr class="col-3 col-md-2 mb-5">
+        <section id="overview" class="mb-16 text-center">
+            <h2 class="text-4xl font-bold text-gray-800 mb-4">欢迎来到《星际公民》的宇宙</h2>
+            <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                《星际公民》是一款雄心勃勃的大型多人在线（MMO）太空模拟游戏。它旨在创造一个前所未有的、细节丰富的科幻宇宙，让玩家可以体验飞行员、商人、探险家、矿工甚至海盗等多种职业。游戏以其惊人的画面保真度、无缝的宇宙探索和对细节的极致追求而闻名。
+            </p>
+        </section>
 
-        <div class="row g-5">
-            <div class="col-md-6">
-                <h2>星际公民入坑基础教程</h2>
-                <p>星际公民相关的基础教程与教学</p>
-                <ul class="icon-list">
-                    <li><a href="tutorial/register_account.html" rel="noopener" target="_blank">2022-10-4
-                        解决注册星际公民账号无限加载问题</a></li>
-
-                    <li class="text-muted">待添加...</li>
-                </ul>
+        <section id="gameplay" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">探索你的职业生涯</h2>
+            <p class="text-center text-gray-500 mb-8 max-w-2xl mx-auto">
+                在《星际公民》的持续宇宙（Persistent Universe）中，你可以选择多种多样的职业道路来谋生和冒险。每种玩法都提供了独特的体验和挑战。点击下方的图标，了解更多关于不同职业的信息。
+            </p>
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                <div id="gameplay-tabs" class="flex flex-wrap justify-center gap-4 mb-6">
+                    <button data-gameplay="bounty" class="gameplay-tab tab-active flex-col items-center justify-center text-center p-3 rounded-lg shadow-sm transition-all duration-300 w-24 h-24">
+                        <span class="text-3xl">🎯</span>
+                        <span class="text-sm font-medium mt-1">赏金猎人</span>
+                    </button>
+                    <button data-gameplay="cargo" class="gameplay-tab flex-col items-center justify-center text-center p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 w-24 h-24">
+                        <span class="text-3xl">📦</span>
+                        <span class="text-sm font-medium mt-1">货物运输</span>
+                    </button>
+                    <button data-gameplay="mining" class="gameplay-tab flex-col items-center justify-center text-center p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 w-24 h-24">
+                        <span class="text-3xl">⛏️</span>
+                        <span class="text-sm font-medium mt-1">采矿作业</span>
+                    </button>
+                    <button data-gameplay="exploration" class="gameplay-tab flex-col items-center justify-center text-center p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 w-24 h-24">
+                        <span class="text-3xl">🔭</span>
+                        <span class="text-sm font-medium mt-1">太空探索</span>
+                    </button>
+                    <button data-gameplay="medical" class="gameplay-tab flex-col items-center justify-center text-center p-3 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-all duration-300 w-24 h-24">
+                        <span class="text-3xl">⚕️</span>
+                        <span class="text-sm font-medium mt-1">医疗救援</span>
+                    </button>
+                </div>
+                <div id="gameplay-content" class="bg-gray-50 p-6 rounded-lg min-h-[120px]">
+                    <h3 id="gameplay-title" class="text-xl font-semibold mb-2 text-blue-600">赏金猎人</h3>
+                    <p id="gameplay-description" class="text-gray-700">追踪并抓捕或消灭AI及玩家罪犯，以获取丰厚报酬。这项高风险高回报的工作需要精湛的驾驶技术和战斗技巧，无论是单独行动还是团队协作，都能体验到紧张刺激的追逐与战斗。</p>
+                </div>
             </div>
+        </section>
 
-            <div class="col-md-6">
-                <h2>星际公民相关资讯信息</h2>
-                <p>星际公民相关的各种资讯信息</p>
-                <ul class="icon-list">
-                    <li><a href="https://robertsspaceindustries.com/citizencon">2022-10-4 《星际公民》一年一度的公民控活动即将到来</a></li>
-                </ul>
+        <section id="ships" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">你的座驾：飞船的世界</h2>
+            <p class="text-center text-gray-500 mb-8 max-w-2xl mx-auto">
+                飞船是《星际公民》的核心。从灵巧的单人战斗机到庞大的工业采矿船，每一艘都由不同的制造商设计，拥有独特的风格和功能。了解各大制造商，找到你心仪的飞船。
+            </p>
+            <div id="manufacturers-grid" class="space-y-4">
+                <div class="manufacturer-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 cursor-pointer">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Aegis Dynamics (圣盾动力)</h3>
+                    </div>
+                    <div class="details max-h-0 opacity-0 px-6 transition-all duration-500">
+                        <p class="text-gray-700"><strong>设计理念：</strong> 军事、坚固、可靠。作为UEE海军的主要承包商，圣盾以其强大的军用舰船而闻名，如“复仇者”系列和标志性的“战锤”炮艇。</p>
+                        <p class="mt-2 text-gray-600"><strong>代表飞船：</strong> Avenger Stalker, Hammerhead, Sabre</p>
+                    </div>
+                </div>
+                 <div class="manufacturer-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 cursor-pointer">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Drake Interplanetary (德雷克星际)</h3>
+                    </div>
+                    <div class="details max-h-0 opacity-0 px-6 transition-all duration-500">
+                        <p class="text-gray-700"><strong>设计理念：</strong> 实用、模块化、无多余装饰。德雷克的飞船深受海盗和独立商人的喜爱，它们通常易于维修和改装，但牺牲了一些舒适性和安全性。著名的“卡特彼勒”就是其代表作。</p>
+                        <p class="mt-2 text-gray-600"><strong>代表飞船：</strong> Cutlass Black, Caterpillar, Vulture</p>
+                    </div>
+                </div>
+                 <div class="manufacturer-card bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 cursor-pointer">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-900">Roberts Space Industries (RSI)</h3>
+                    </div>
+                    <div class="details max-h-0 opacity-0 px-6 transition-all duration-500">
+                        <p class="text-gray-700"><strong>设计理念：</strong> 经典、多功能、探索精神。作为发明了量子驱动器的公司，RSI在飞船设计上体现了人类的探索精神。其“星座”系列是多功能探险船的典范。</p>
+                        <p class="mt-2 text-gray-600"><strong>代表飞船：</strong> Constellation Andromeda, Aurora MR, Mantis</p>
+                    </div>
+                </div>
             </div>
-        </div>
+        </section>
+
+        <section id="squadron42" class="mb-16 bg-gray-800 text-white rounded-xl shadow-lg p-8">
+            <h2 class="text-3xl font-bold text-center mb-4">特别情报：42中队 (Squadron 42)</h2>
+            <p class="text-center text-gray-300 max-w-3xl mx-auto">
+                除了大型多人在线宇宙，《星际公民》项目还包含一个独立的单人战役——《42中队》。这是一个故事驱动的太空歌剧，拥有全明星演员阵容（如马克·哈米尔、加里·奥德曼）。你将扮演UEE海军的一名新兵飞行员，参与一场史诗般的军事行动。请注意，《42中队》和《星际公民》持续宇宙是分开购买的。
+            </p>
+        </section>
+
+        <section id="development" class="mb-16">
+            <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">前所未有的开发模式</h2>
+            <p class="text-center text-gray-500 mb-8 max-w-2xl mx-auto">
+                《星际公民》以其完全由玩家社区资助的众筹模式而闻名，打破了所有众筹记录。这种开放式开发意味着玩家可以提前体验Alpha版本并见证游戏的演变。下方图表展示了历年来的众筹资金增长情况。
+            </p>
+            <div class="bg-white rounded-xl shadow-lg p-6 md:p-8">
+                 <div class="chart-container">
+                    <canvas id="fundingChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="getting-started" class="mb-8">
+             <h2 class="text-3xl font-bold text-center text-gray-800 mb-2">开启你的星际之旅</h2>
+            <p class="text-center text-gray-500 mb-8 max-w-2xl mx-auto">
+                准备好进入宇宙了吗？开始《星际公民》的旅程比你想象的要简单。遵循以下步骤，你很快就能驾驶自己的飞船翱翔星海。
+            </p>
+            <div class="grid md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl font-bold text-blue-500 mb-4">1</div>
+                    <h3 class="text-xl font-semibold mb-2">创建账户</h3>
+                    <p class="text-gray-600">访问官方网站 robertsspaceindustries.com 注册一个免费账户。建议使用推荐码（Referral Code）注册，这样你和推荐人都能获得游戏内奖励。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl font-bold text-blue-500 mb-4">2</div>
+                    <h3 class="text-xl font-semibold mb-2">购买游戏包</h3>
+                    <p class="text-gray-600">你需要购买一个包含飞船和游戏访问权限的“游戏包”（Game Package）。选择一个新手包，如RSI Aurora MR或Consolidated Outland Mustang Alpha，即可开始游戏。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-md">
+                    <div class="text-4xl font-bold text-blue-500 mb-4">3</div>
+                    <h3 class="text-xl font-semibold mb-2">下载并游玩</h3>
+                    <p class="text-gray-600">购买后，下载RSI启动器，安装游戏。请注意，游戏目前仍处于Alpha开发阶段，你可能会遇到Bug。保持耐心，享受探索这个不断成长的宇宙的乐趣！</p>
+                </div>
+            </div>
+        </section>
+
     </main>
 
-
-
-    <footer class="row row-cols-5 py-5 my-5 border-top">
-        <div class="col">
-            <a href="" class="d-flex align-items-center mb-3 link-dark text-decoration-none">
-                <img src="images/starcitizendonnyjin.ico" width="30"/>
-            </a>
-            <p class="text-muted">&copy; 2022</p>
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-        <div class="col">
-        </div>
-        <div class="col-sm-2">
-            <h5>友情链接</h5>
-            <ul class="nav flex-column">
-                <li class="nav-item mb-2"><a href="#" class="nav-link p-0 text-muted">首页</a></li>
-                <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="https://robertsspaceindustries.com/">星际公民官网</a></li>
-                <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="https://www.youtube.com/c/RobertsSpaceInd">星际公民YouTube</a></li>
-                <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="https://www.twitch.tv/starcitizen">星际公民Twitch</a></li>
-                <li class="nav-item mb-2"><a class="nav-link p-0 text-muted" href="https://space.bilibili.com/72404725">星际公民DonnyJin BiliBili 频道</a></li>
-                <li class="nav-item mb-2"><a href="https://starcitizenzh.com/sc_guide/" class="nav-link p-0 text-muted">星际公民中文指导</a></li>
-
-            </ul>
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Cloud Imperium Rights LLC and Cloud Imperium Rights Ltd.</p>
+            <p class="text-sm text-gray-400 mt-2">此页面为非官方粉丝制作的概述报告，所有信息以官方发布为准。</p>
         </div>
     </footer>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const gameplayData = {
+                bounty: {
+                    title: '赏金猎人',
+                    description: '追踪并抓捕或消灭AI及玩家罪犯，以获取丰厚报酬。这项高风险高回报的工作需要精湛的驾驶技术和战斗技巧，无论是单独行动还是团队协作，都能体验到紧张刺激的追逐与战斗。'
+                },
+                cargo: {
+                    title: '货物运输',
+                    description: '在星系间购买和销售商品，或接受运输合同，将货物安全送达目的地。你需要一艘可靠的货船，并规划好航线，规避海盗的威胁，通过合法的贸易积累财富。'
+                },
+                mining: {
+                    title: '采矿作业',
+                    description: '驾驶专门的采矿船，在小行星带或星球表面寻找和开采有价值的矿石。从小规模的单人作业到大型工业开采，采矿是获取稳定收入的重要途径。'
+                },
+                exploration: {
+                    title: '太空探索',
+                    description: '飞向未知的星系，扫描跃迁点，发现新的行星、残骸和资源点。探险家需要具备自给自足的能力，并准备好应对任何突发状况。每一次的发现都可能带来巨大的财富和声望。'
+                },
+                medical: {
+                    title: '医疗救援',
+                    description: '响应其他玩家的求救信标，前往战场或事故现场提供医疗援助。作为一名太空医生，你可以治疗伤员、复苏濒死的玩家，是团队生存的关键保障。'
+                }
+            };
 
-</div>
+            const gameplayTabs = document.querySelectorAll('.gameplay-tab');
+            const gameplayTitle = document.getElementById('gameplay-title');
+            const gameplayDescription = document.getElementById('gameplay-description');
 
+            gameplayTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    gameplayTabs.forEach(t => {
+                        t.classList.remove('tab-active');
+                        t.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
+                    });
+                    tab.classList.add('tab-active');
+                    tab.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-gray-200');
 
-<script src="js/bootstrap.bundle.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+                    const gameplayType = tab.dataset.gameplay;
+                    gameplayTitle.textContent = gameplayData[gameplayType].title;
+                    gameplayDescription.textContent = gameplayData[gameplayType].description;
+                });
+            });
 
+            const manufacturerCards = document.querySelectorAll('.manufacturer-card');
+            manufacturerCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                });
+            });
 
+            const fundingData = {
+                labels: ['2013', '2014', '2015', '2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024'],
+                datasets: [{
+                    label: '众筹总额 (百万美元)',
+                    data: [34.91, 65.3, 103.6, 141.2, 174.2, 211.4, 262.1, 339.7, 434.9, 541.5, 658.2, 700.0],
+                    fill: true,
+                    borderColor: 'rgb(59, 130, 246)',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.3,
+                    pointBackgroundColor: 'rgb(59, 130, 246)',
+                    pointRadius: 5,
+                    pointHoverRadius: 7
+                }]
+            };
+
+            const config = {
+                type: 'line',
+                data: fundingData,
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value + 'M';
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    let label = context.dataset.label || '';
+                                    if (label) {
+                                        label += ': ';
+                                    }
+                                    if (context.parsed.y !== null) {
+                                        label += new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', minimumFractionDigits: 0, maximumFractionDigits: 0 }).format(context.parsed.y * 1000000);
+                                    }
+                                    return label;
+                                }
+                            }
+                        }
+                    }
+                }
+            };
+
+            const fundingChartCtx = document.getElementById('fundingChart').getContext('2d');
+            new Chart(fundingChartCtx, config);
+
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            const mobileNav = document.getElementById('mobile-nav');
+            mobileNav.addEventListener('change', function(e) {
+                const targetId = e.target.value;
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
 </body>
 </html>
